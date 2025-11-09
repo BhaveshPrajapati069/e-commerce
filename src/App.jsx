@@ -10,6 +10,9 @@ import About from './pages/About'
 import Cart from './pages/Cart'
 import Wishlist from './pages/Wishlist'
 import Login from './pages/Login'
+import Contact from './pages/Contact'
+
+
 
 export default function App(){
   return (
@@ -24,6 +27,7 @@ export default function App(){
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
           {/* Add more routes as needed */}
         </Routes>
       </main>

@@ -17,9 +17,9 @@ export default function Home() {
               <Link to="/collections" className="btn btn-warning me-2">
                 Shop Collections
               </Link>
-              <Link to="/about" className="btn btn-outline-secondary">
+              {/* <Link to="/about" className="btn btn-outline-secondary">
                 About Us
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div
