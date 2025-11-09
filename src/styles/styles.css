@@ -19,136 +19,125 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== Brand Logo ===== */
+/* ===== Header & brand ===== */
 .brand {
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: 0.5px;
 }
 
-/* ===== Hero Section ===== */
-.hero-image {
-  background: linear-gradient(90deg, #fff 0%, #f6f4ef 100%);
-}
+/* header small polish */
+.header-inner { gap: 8px; }
+.left-block .brand { max-width: 60vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.right-block { gap: 8px; align-items: center; }
 
-.hero-image .hero-text {
-  padding: 1rem 0;
-}
-
-.hero-image .hero-image-box img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ===== Cards & Products ===== */
-.card-image-placeholder {
-  height: 180px;
-  display: flex;
+/* ===== Mobile icon buttons ===== */
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
-  border-radius: 6px;
-}
-
-.card h6 {
-  font-size: 0.95rem;
-  line-height: 1.2;
-}
-
-.card .card-body {
-  padding: 0.9rem;
-}
-
-.small-muted {
-  font-size: 0.9rem;
-  color: #6c757d;
-}
-
-/* ===== Buttons & Forms ===== */
-.btn-sm {
-  font-size: 0.9rem;
-}
-
-.form-control-sm {
-  font-size: 0.9rem;
-}
-
-/* ===== Toasts ===== */
-.toast {
-  max-width: 320px;
   border-radius: 8px;
+  padding: 0;
+  font-size: 14px;
+  box-sizing: border-box;
 }
-
-/* ===== Header & Navigation ===== */
-.header-top-controls {
-  display: flex;
+.icon-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  border-radius: 999px;
+  background: #dc3545;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.icon-badge.inverse { background: #212529; color: #fff; }
+.mobile-icons { gap: 10px; }
+
+/* ===== Mobile search drawer (slide-down under header) ===== */
+@keyframes slideDown {
+  0% { transform: translateY(-8px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
-.header-search-mobile {
-  display: none;
+.mobile-search-drawer {
+  position: fixed;
+  inset: 0; /* cover whole viewport so tapping outside closes */
+  z-index: 1045;
+  background: rgba(0,0,0,0.18); /* subtle backdrop */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0.5rem; /* keep small gap at top for header */
+  -webkit-overflow-scrolling: touch;
 }
 
-/* ===== Responsive ===== */
+.mobile-search-drawer-panel {
+  width: 100%;
+  max-width: 720px;
+  background: #fff;
+  border-radius: 10px;
+  margin-top: 3.5rem; /* aligns under header */
+  padding: 0.75rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.16);
+  animation: slideDown 160ms ease-out;
+}
+
+/* input + close button inside same row */
+.input-with-close {
+  position: relative;
+}
+.input-with-close .form-control {
+  padding-right: 48px; /* space for close button */
+  width: 100%;
+  box-sizing: border-box;
+}
+.btn-close-input {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: #f8f9fa;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* try-suggestions row */
+.mobile-search-drawer .small { color: #6c757d; font-size: 0.9rem; }
+
+/* actions: stacked on small screens */
+.mobile-search-actions .btn { border-radius: 8px; font-size: 1rem; }
+@media (max-width: 575.98px) {
+  .mobile-search-actions .btn { padding: 0.6rem; }
+}
+
+/* ensure input is big enough on small screens */
+.form-control-lg { font-size: 1rem; padding: 0.6rem 0.75rem; }
+
+/* keep other header/mobile rules reasonable */
 @media (max-width: 767.98px) {
-  /* Brand size */
-  .brand {
-    font-size: 1.1rem;
-  }
-
-  /* Stack header controls */
-  .header-top-controls {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: stretch;
-  }
-
-  /* Mobile search visible */
-  .header-search-mobile {
-    display: block;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-
-  /* Buttons bigger for touch */
-  .btn-sm {
-    padding: 0.45rem 0.6rem;
-    font-size: 0.95rem;
-  }
-
-  .form-control-sm {
-    padding: 0.45rem 0.6rem;
-    font-size: 0.95rem;
-  }
-
-  /* Hero stacks vertically */
-  .hero-image .row {
-    flex-direction: column-reverse;
-  }
-
-  .hero-image .hero-text {
-    text-align: center;
-  }
-
-  /* Product cards spacing */
-  .card {
-    margin-bottom: 1rem;
+  .brand { font-size: 1.1rem; }
+  .right-block .btn.btn-light, .right-block .btn.btn-outline-secondary, .right-block .btn.btn-outline-danger {
+    width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 6px;
   }
 }
 
-/* ===== Hero Full Banner (optional future use) ===== */
-.hero-banner {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-/* ===== Animations ===== */
-@keyframes slideInRight {
-  0% { transform: translateX(100%); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-
-
+/* slight visual polish */
+.mobile-search-drawer-panel .spinner-border { margin-left: 0.4rem; }
